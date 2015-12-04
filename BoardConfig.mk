@@ -15,7 +15,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_BOOTLOADER_BOARD_NAME := soho
 
-BOARD_KERNEL_CMDLINE := console=ttyO2,115200n8 mem=1G vmalloc=496M init=/init androidboot.console=ttyO2 androidboot.hardware=bowser omap_wdt.timer_margin=30 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=tty0 mem=1G vmalloc=496M init=/init androidboot.console=tty0 androidboot.hardware=bowser omap_wdt.timer_margin=30 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 
