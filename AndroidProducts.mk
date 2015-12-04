@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_soho.mk
+    $(LOCAL_DIR)/full_soho.mk
