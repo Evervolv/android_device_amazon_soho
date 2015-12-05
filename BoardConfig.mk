@@ -1,4 +1,5 @@
 USE_CAMERA_STUB := true
+LOCAL_PATH := device/amazon/soho
 
 # inherit from the proprietary version
 -include vendor/amazon/soho/BoardConfigVendor.mk
@@ -21,15 +22,17 @@ BOARD_KERNEL_PAGESIZE := 2048
 
 # fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 83886080
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x105c0000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_KERNEL_SOURCE := kernel/amazon/soho
 TARGET_KERNEL_CONFIG := android_soho_defconfig
-TARGET_PREBUILT_KERNEL := device/amazon/soho/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 DEVICE_RESOLUTION := 800x1280
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_EXCLUDE_MTP := true
