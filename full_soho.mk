@@ -18,7 +18,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/recovery/root/init.recovery.bowser.rc:root/init.recovery.bowser.rc
+	$(LOCAL_PATH)/recovery/root/init.recovery.bowser.rc:recovery/root/init.recovery.bowser.rc \
+	$(LOCAL_PATH)/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 $(call inherit-product, build/target/product/full.mk)
 
