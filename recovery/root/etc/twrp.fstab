@@ -1,7 +1,7 @@
 # mount point   fstype  device
 /bootloader     emmc    /dev/block/platform/omap_hsmmc.1/by-name/bootloader
 /xloader        emmc    /dev/block/platform/omap_hsmmc.1/by-name/xloader
-/efs            ext4    /dev/block/platform/omap_hsmmc.1/by-name/efs            flags=backup=1;display="EFS"
+/misc           emmc    /dev/block/platform/omap_hsmmc.1/by-name/misc
 
 /boot           emmc    /dev/block/platform/omap_hsmmc.1/by-name/boot           flags=backup=1
 /recovery       emmc    /dev/block/platform/omap_hsmmc.1/by-name/recovery       flags=backup=1
@@ -9,4 +9,5 @@
 /cache          ext4    /dev/block/platform/omap_hsmmc.1/by-name/cache          flags=wipeduringfactoryreset;backup=1;storage
 /data           ext4    /dev/block/platform/omap_hsmmc.1/by-name/userdata       flags=wipeduringfactoryreset;backup=1;storage
 
+/efs            ext4    /dev/block/platform/omap_hsmmc.1/by-name/efs            flags=backup=1;display="EFS"
 /system         ext4    /dev/block/platform/omap_hsmmc.1/by-name/system         flags=backup=1
