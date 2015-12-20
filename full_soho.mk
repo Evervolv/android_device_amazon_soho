@@ -24,7 +24,7 @@ $(call inherit-product, $(LOCAL_PATH)/device.mk)
 PRODUCT_DEVICE := soho
 PRODUCT_NAME := full_soho
 PRODUCT_BRAND := Amazon
-PRODUCT_MODEL := KFSOWI
+PRODUCT_MODEL := Kindle Fire HD (3rd Generation)
 PRODUCT_MANUFACTURER := Amazon
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=soho

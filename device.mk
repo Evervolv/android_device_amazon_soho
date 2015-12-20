@@ -19,3 +19,22 @@ $(call inherit-product-if-exists, vendor/amazon/soho/soho-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+# Board-specific files
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/fstab.bowser:root/fstab.bowser \
+	$(LOCAL_PATH)/init.bowser.rc:root/init.bowser.rc \
+	$(LOCAL_PATH)/ueventd.bowser.rc:root/ueventd.bowser.rc
+
+# OMAP4
+$(call inherit-product, hardware/ti/omap4/omap4.mk)
+PRODUCT_VENDOR_KERNEL_HEADERS := $(TARGET_KERNEL_SOURCE)/include
+
+# Bug fixes
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml
+
+# Configuration
+PRODUCT_CHARACTERISTICS := tablet,nosdcard
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.sf.lcd_density=240
