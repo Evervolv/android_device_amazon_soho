@@ -27,26 +27,37 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ueventd.bowser.rc:root/ueventd.bowser.rc
 
 # OMAP4
-$(call inherit-product, hardware/ti/omap4/omap4.mk)
+$(call inherit-product-if-exists, hardware/ti/omap4/omap4.mk)
 PRODUCT_VENDOR_KERNEL_HEADERS := $(TARGET_KERNEL_SOURCE)/include
 
 # Wireless
 PRODUCT_PACKAGES += \
 	dhcpd.conf \
+	hostapd \
 	libwpa_client \
 	wpa_supplicant \
 	wpa_supplicant.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
+	ro.carrier=wifi-only \
 	wifi.interface=wlan0
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
-#
-# Bug fixes
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml
 
 # Configuration
+
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
+
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=240
+
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+	frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
+
