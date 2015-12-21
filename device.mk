@@ -30,6 +30,18 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, hardware/ti/omap4/omap4.mk)
 PRODUCT_VENDOR_KERNEL_HEADERS := $(TARGET_KERNEL_SOURCE)/include
 
+# Wireless
+PRODUCT_PACKAGES += \
+	dhcpd.conf \
+	libwpa_client \
+	wpa_supplicant \
+	wpa_supplicant.conf
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	wifi.interface=wlan0
+
+-include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
+#
 # Bug fixes
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml
