@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
 
 # OMAP4
 $(call inherit-product-if-exists, hardware/ti/omap4/omap4.mk)
-PRODUCT_VENDOR_KERNEL_HEADERS := $(TARGET_KERNEL_SOURCE)/include
+PRODUCT_VENDOR_KERNEL_HEADERS := $(LOCAL_PATH)/kernel-headers
 
 # Wireless
 PRODUCT_PACKAGES += \
@@ -44,12 +44,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
 
-# Configuration
+# Bluetooth
+PRODUCT_PACKAGES += \
+	libbt-vendor
 
+# Configuration
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=240
+
+PRODUCT_PACKAGES += \
+	lights.bowser
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \

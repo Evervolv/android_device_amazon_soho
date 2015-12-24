@@ -27,6 +27,10 @@ TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 
+TARGET_BOOTLOADER_BOARD_NAME := bowser
+
+-include hardware/ti/omap4/BoardConfigCommon.mk
+
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/amazon/soho
 TARGET_KERNEL_CONFIG := android_soho_defconfig
@@ -67,6 +71,10 @@ WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA   := "/system/vendor/firmware/fw_bcm4330.bin"
 WIFI_DRIVER_FW_PATH_AP    := "/system/vendor/firmware/fw_bcm4330_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P   := "/system/vendor/firmware/fw_bcm4330_p2p.bin"
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
 # inherit from the proprietary version
 -include vendor/amazon/soho/BoardConfigVendor.mk
