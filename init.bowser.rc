@@ -28,7 +28,7 @@ on fs
 service watchdogd /sbin/watchdogd 10 20
     class core
 
-service pvrsrvinit /vendor/bin/pvrsrvinit
+service pvrsrvinit /system/bin/pvrsrvinit
     class core
     user root
     group root

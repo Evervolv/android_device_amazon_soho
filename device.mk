@@ -52,7 +52,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=240
+	ro.sf.lcd_density=240 \
+	ro.config.low_ram=true \
+	ro.ksm.default=1 \
+	dalvik.vm.heapstartsize=5m \
+	dalvik.vm.heapgrowthlimit=96m \
+	dalvik.vm.heapsize=256m \
+	dalvik.vm.heaptargetutilization=0.75 \
+	dalvik.vm.heapminfree=512k \
+	dalvik.vm.heapmaxfree=2m
 
 PRODUCT_PACKAGES += \
 	lights.bowser
@@ -67,3 +75,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
+# F2FS
+PRODUCT_PACKAGES += \
+	mkfs.f2fs \
+	make_f2fs \
+	fsck.f2fs
