@@ -42,4 +42,11 @@ struct omx_packet {
  uint32_t data[0];
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
+
+struct omx_pvr_data {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ int fd;
+ unsigned int num_handles;
+ void *handles[2];
+};
 #endif

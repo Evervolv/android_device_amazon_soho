@@ -16,12 +16,15 @@
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/amazon/soho/soho-vendor.mk)
+$(call inherit-product-if-exists, vendor/amazon/omap4-common/omap4-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/amazon/omap4-common/omap4-common-vendor-544_112.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Board-specific files
 PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/boot/u-boot.bin:u-boot.bin \
 	$(LOCAL_PATH)/fstab.bowser:root/fstab.bowser \
 	$(LOCAL_PATH)/init.bowser.rc:root/init.bowser.rc \
 	$(LOCAL_PATH)/ueventd.bowser.rc:root/ueventd.bowser.rc
@@ -43,6 +46,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
+
+# To be inline with Build repo
+PRODUCT_COPY_FILES += \
+    device/amazon/soho/install-recovery.sh:$(PRODUCT_OUT)/ota_temp/SYSTEM/bin/install-recovery.sh
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -80,3 +87,4 @@ PRODUCT_PACKAGES += \
 	mkfs.f2fs \
 	make_f2fs \
 	fsck.f2fs
+
