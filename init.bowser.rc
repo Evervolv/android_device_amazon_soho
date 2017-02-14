@@ -7,10 +7,9 @@ on init
 on fs
     mount_all /fstab.bowser
 
-    # SGX
-    insmod /system/lib/modules/pvr_logger.ko
-    insmod /system/lib/modules/pvrsrvkm.ko
-    insmod /system/lib/modules/omaplfb.ko
+    # pvr module
+    insmod /system/lib/modules/pvrsrvkm_sgx544_112.ko
+   # insmod /system/lib/modules/omaplfb_sgx544_112.ko
     start pvrsrvinit
 
 # Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
