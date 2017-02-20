@@ -27,6 +27,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/boot/u-boot.bin:u-boot.bin \
 	$(LOCAL_PATH)/fstab.bowser:root/fstab.bowser \
 	$(LOCAL_PATH)/init.bowser.rc:root/init.bowser.rc \
+	$(LOCAL_PATH)/init.bowser.usb.rc:root/init.bowser.usb.rc \
 	$(LOCAL_PATH)/ueventd.bowser.rc:root/ueventd.bowser.rc
 
 # OMAP4
@@ -41,8 +42,7 @@ PRODUCT_PACKAGES += \
 	wpa_supplicant \
 	wpa_supplicant.conf
 
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.carrier=wifi-only \
+PRODUCT_PROPERTY_OVERRIDES +=  \
 	wifi.interface=wlan0
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
@@ -68,6 +68,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.heaptargetutilization=0.75 \
 	dalvik.vm.heapminfree=512k \
 	dalvik.vm.heapmaxfree=2m
+
+# no RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+	keyguard.no_require_sim=1 \
+	ro.radio.use-ppp=no \
+	ro.config.nocheckin=yes \
+	ro.radio.noril=1 \
+	ro.carrier=wifi-only \
+	persist.radio.noril=1
 
 PRODUCT_PACKAGES += \
 	lights.bowser
