@@ -39,6 +39,7 @@ TARGET_UBOOT_CONFIG := android_soho_config
 TARGET_KERNEL_SOURCE := kernel/amazon/soho
 TARGET_KERNEL_CONFIG := android_soho_defconfig
 
+
 BOARD_KERNEL_CMDLINE := console=tty0 mem=1G vmalloc=496M init=/init androidboot.console=tty0 androidboot.hardware=bowser androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -91,12 +92,10 @@ USE_OPENGL_RENDERER := true
 # Wireless
 BOARD_WLAN_DEVICE := bcmdhd
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
-
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA   := "/system/vendor/firmware/fw_bcm4330.bin"
 WIFI_DRIVER_FW_PATH_AP    := "/system/vendor/firmware/fw_bcm4330_apsta.bin"

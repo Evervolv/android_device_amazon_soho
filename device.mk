@@ -31,16 +31,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ueventd.bowser.rc:root/ueventd.bowser.rc
 
 # OMAP4
-$(call inherit-product-if-exists, hardware/ti/omap4/omap4.mk)
+$(call inherit-product-if-exists, device/amazon/omap4-common/common.mk)
 PRODUCT_VENDOR_KERNEL_HEADERS := $(LOCAL_PATH)/kernel-headers
-
-# Wireless
-PRODUCT_PACKAGES += \
-	dhcpd.conf \
-	hostapd \
-	libwpa_client \
-	wpa_supplicant \
-	wpa_supplicant.conf
 
 PRODUCT_PROPERTY_OVERRIDES +=  \
 	wifi.interface=wlan0
@@ -49,7 +41,7 @@ PRODUCT_PROPERTY_OVERRIDES +=  \
 
 # To be inline with Build repo
 PRODUCT_COPY_FILES += \
-    device/amazon/soho/install-recovery.sh:$(PRODUCT_OUT)/ota_temp/SYSTEM/bin/install-recovery.sh
+	device/amazon/soho/install-recovery.sh:$(PRODUCT_OUT)/ota_temp/SYSTEM/bin/install-recovery.sh
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -81,6 +73,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
 	lights.bowser
 
+#sensors
+PRODUCT_PACKAGES += \
+	sensors.omap4 \
+	libinvensense_hal
+
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -90,10 +87,4 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
-
-# F2FS
-PRODUCT_PACKAGES += \
-	mkfs.f2fs \
-	make_f2fs \
-	fsck.f2fs
 
