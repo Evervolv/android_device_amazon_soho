@@ -1,7 +1,7 @@
 [
  {
-    "repository": "android_kernel_amazon_soho",
-    "target_path": "kernel/amazon/soho",
+    "repository": "android_kernel_ti_omap",
+    "target_path": "kernel/ti/omap",
     "dep_type": "kernel"
  },
  {

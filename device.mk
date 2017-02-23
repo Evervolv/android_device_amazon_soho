@@ -41,7 +41,8 @@ PRODUCT_PROPERTY_OVERRIDES +=  \
 
 # To be inline with Build repo
 PRODUCT_COPY_FILES += \
-	device/amazon/soho/install-recovery.sh:$(PRODUCT_OUT)/ota_temp/SYSTEM/bin/install-recovery.sh
+	device/amazon/soho/install-recovery.sh:$(PRODUCT_OUT)/ota_temp/SYSTEM/bin/install-recovery.sh \
+	device/amazon/soho/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
 
 # Bluetooth
 PRODUCT_PACKAGES += \

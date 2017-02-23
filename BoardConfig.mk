@@ -36,7 +36,7 @@ TARGET_UBOOT_CONFIG := android_soho_config
 -include hardware/ti/omap4/BoardConfigCommon.mk
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/amazon/soho
+TARGET_KERNEL_SOURCE := kernel/ti/omap
 TARGET_KERNEL_CONFIG := android_soho_defconfig
 
 
