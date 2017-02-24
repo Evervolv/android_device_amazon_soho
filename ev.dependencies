@@ -6,7 +6,7 @@
  },
  {
     "repository": "android_device_amazon_bowser-common",
-    "target_path": "device/amazon/bower-common",
+    "target_path": "device/amazon/bowser-common",
     "dep_type": "device"
  },
  {
@@ -18,10 +18,5 @@
     "repository": "android_hardware_ti_omap4",
     "target_path": "hardware/ti/omap4",
     "dep_type": "hardware"
- },
- {
-    "repository": "android_vendro_amazon",
-    "target_path": "vendor/amazon",
-    "dep_type": "vendor"
- },
+ }
 ]
