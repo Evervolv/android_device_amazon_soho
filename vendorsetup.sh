@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo full_soho-eng
-add_lunch_combo cm_soho-userdebug
+#add_lunch_combo full_soho-eng
+#add_lunch_combo cm_soho-userdebug
