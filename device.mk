@@ -34,11 +34,6 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product-if-exists, device/amazon/omap4-common/common.mk)
 PRODUCT_VENDOR_KERNEL_HEADERS := $(LOCAL_PATH)/kernel-headers
 
-PRODUCT_PROPERTY_OVERRIDES +=  \
-	wifi.interface=wlan0
-
--include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
-
 # To be inline with Build repo
 PRODUCT_COPY_FILES += \
 	device/amazon/soho/install-recovery.sh:$(PRODUCT_OUT)/ota_temp/SYSTEM/bin/install-recovery.sh \
@@ -78,6 +73,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	sensors.omap4 \
 	libinvensense_hal
+
+#wifi
+PRODUCT_PACKAGES += \
+	libwifi-hal-bcm \
+	lib_driver_cmd_bcmdhd
+
+PRODUCT_PROPERTY_OVERRIDES +=  \
+	wifi.interface=wlan0
+
+-include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
