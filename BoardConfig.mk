@@ -14,6 +14,7 @@
 # limitations under the License.
 
 DEVICE_PATH := device/amazon/soho
+-include device/amazon/bowser-common/BoardConfigCommon.mk
 
 BLOCK_BASED_OTA := false
 
@@ -21,7 +22,7 @@ BLOCK_BASED_OTA := false
 TARGET_BOARD_PLATFORM := omap4
 TARGET_BOARD_PLATFORM_VARIANT := omap4-next
 TARGET_BOARD_OMAP_CPU := 4470
-
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_ABI2 := armeabi
@@ -32,8 +33,6 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_BOOTLOADER_BOARD_NAME := bowser
 TARGET_UBOOT_DIR := bootable/amazon/soho/u-boot
 TARGET_UBOOT_CONFIG := android_soho_config
-
--include hardware/ti/omap4/BoardConfigCommon.mk
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/ti/omap
@@ -73,7 +72,6 @@ BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/exploit.mk
 
 BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
-TARGET_RELEASETOOL_MAKE_RECOVERY_PATCH_SCRIPT := 'true'
 
 # TWRP
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/fstab.bowser
@@ -90,17 +88,9 @@ BOARD_EGL_CFG := $(DEVICE_PATH)/egl.cfg
 USE_OPENGL_RENDERER := true
 
 # Wireless
-BOARD_WLAN_DEVICE := bcmdhd
-WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA   := "/system/vendor/firmware/fw_bcm4330.bin"
 WIFI_DRIVER_FW_PATH_AP    := "/system/vendor/firmware/fw_bcm4330_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P   := "/system/vendor/firmware/fw_bcm4330_p2p.bin"
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true

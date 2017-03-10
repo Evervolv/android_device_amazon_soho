@@ -16,7 +16,6 @@
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/amazon/soho/soho-vendor.mk)
-$(call inherit-product-if-exists, vendor/amazon/omap4-common/omap4-common-vendor.mk)
 $(call inherit-product-if-exists, vendor/amazon/omap4-common/omap4-common-vendor-544_112.mk)
 
 # Overlay
@@ -31,17 +30,12 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ueventd.bowser.rc:root/ueventd.bowser.rc
 
 # OMAP4
-$(call inherit-product-if-exists, device/amazon/omap4-common/common.mk)
+$(call inherit-product-if-exists, device/amazon/bowser-common/common.mk)
 PRODUCT_VENDOR_KERNEL_HEADERS := $(LOCAL_PATH)/kernel-headers
 
 # To be inline with Build repo
 PRODUCT_COPY_FILES += \
-	device/amazon/soho/install-recovery.sh:$(PRODUCT_OUT)/ota_temp/SYSTEM/bin/install-recovery.sh \
-	device/amazon/soho/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
-
-# Bluetooth
-PRODUCT_PACKAGES += \
-	libbt-vendor
+	device/amazon/soho/install-recovery.sh:$(PRODUCT_OUT)/ota_temp/SYSTEM/bin/install-recovery.sh
 
 # Configuration
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
@@ -66,21 +60,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.carrier=wifi-only \
 	persist.radio.noril=1
 
-PRODUCT_PACKAGES += \
-	lights.bowser
-
-#sensors
-PRODUCT_PACKAGES += \
-	sensors.omap4 \
-	libinvensense_hal
-
 #wifi
 PRODUCT_PACKAGES += \
 	libwifi-hal-bcm \
 	lib_driver_cmd_bcmdhd
-
-PRODUCT_PROPERTY_OVERRIDES +=  \
-	wifi.interface=wlan0
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
 
