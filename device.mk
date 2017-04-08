@@ -40,6 +40,7 @@ PRODUCT_CHARACTERISTICS := tablet,nosdcard
 PRODUCT_PACKAGES += \
     fstab.bowser \
     init.bowser.rc \
+    init.bowser-common.rc \
     init.bowser.usb.rc \
     ueventd.bowser.rc
 
