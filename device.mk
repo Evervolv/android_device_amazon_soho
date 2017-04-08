@@ -23,11 +23,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Board-specific files
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilt/boot/u-boot.bin:u-boot.bin \
-	$(LOCAL_PATH)/fstab.bowser:root/fstab.bowser \
-	$(LOCAL_PATH)/init.bowser.rc:root/init.bowser.rc \
-	$(LOCAL_PATH)/init.bowser.usb.rc:root/init.bowser.usb.rc \
-	$(LOCAL_PATH)/ueventd.bowser.rc:root/ueventd.bowser.rc
+	$(LOCAL_PATH)/prebuilt/boot/u-boot.bin:u-boot.bin
 
 # OMAP4
 $(call inherit-product-if-exists, device/amazon/bowser-common/common.mk)
@@ -39,6 +35,13 @@ PRODUCT_COPY_FILES += \
 
 # Configuration
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
+
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.bowser \
+    init.bowser.rc \
+    init.bowser.usb.rc \
+    ueventd.bowser.rc
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=240 \
