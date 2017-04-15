@@ -32,7 +32,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 
 TARGET_BOOTLOADER_BOARD_NAME := bowser
 TARGET_UBOOT_DIR := bootable/amazon/soho/u-boot
-TARGET_UBOOT_CONFIG := android_soho_config
+TARGET_UBOOT_CONFIG := soho_config
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/ti/omap

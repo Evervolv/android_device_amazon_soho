@@ -21,10 +21,6 @@ $(call inherit-product-if-exists, vendor/amazon/omap4-common/omap4-common-vendor
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Board-specific files
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilt/boot/u-boot.bin:u-boot.bin
-
 # OMAP4
 $(call inherit-product-if-exists, device/amazon/bowser-common/common.mk)
 PRODUCT_VENDOR_KERNEL_HEADERS := $(LOCAL_PATH)/kernel-headers

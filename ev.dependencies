@@ -18,5 +18,9 @@
     "repository": "android_hardware_ti_omap4",
     "target_path": "hardware/ti/omap4",
     "dep_type": "hardware"
+ },
+ {
+    "repository": "android_bootable_amazon_soho_u-boot",
+    "target_path": "bootable/amazon/soho/u-boot"
  }
 ]
