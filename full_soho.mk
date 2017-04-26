@@ -33,3 +33,6 @@ PRODUCT_MODEL := Kindle Fire HD (3rd Generation)
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	PRODUCT_NAME=soho
+
+# call the proprietary setup
+$(call inherit-product-if-exists, vendor/amazon/soho/soho-vendor.mk)

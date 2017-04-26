@@ -14,49 +14,36 @@
 # limitations under the License.
 
 DEVICE_PATH := device/amazon/soho
+
 -include device/amazon/bowser-common/BoardConfigCommon.mk
 
 BLOCK_BASED_OTA := false
 
 # TI OMAP4470
-TARGET_BOARD_PLATFORM := omap4
-TARGET_BOARD_PLATFORM_VARIANT := omap4-next
 TARGET_BOARD_OMAP_CPU := 4470
-TARGET_NEEDS_TEXT_RELOCATIONS := true
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_VARIANT := cortex-a9
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
 
+# Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := bowser
 TARGET_UBOOT_DIR := bootable/amazon/soho/u-boot
 TARGET_UBOOT_CONFIG := soho_config
 
-# Kernel
-TARGET_KERNEL_SOURCE := kernel/ti/omap
-TARGET_KERNEL_CONFIG := android_soho_defconfig
+# Compatibilty
+TARGET_NEEDS_TEXT_RELOCATIONS := true
 
-BOARD_KERNEL_CMDLINE := console=tty0 mem=1G vmalloc=496M init=/init androidboot.console=tty0 androidboot.hardware=bowser androidboot.selinux=permissive
+# Kernel
+BOARD_CUSTOM_BOOTIMG := true
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/boot.mk
+BOARD_KERNEL_CMDLINE := console=tty0 mem=1G vmalloc=496M init=/init androidboot.console=tty0 androidboot.hardware=bowser
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-
+TARGET_KERNEL_SOURCE := kernel/ti/omap
+TARGET_KERNEL_CONFIG := android_soho_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.8
 
-# External SGX Module
-SGX_MODULES:
-	make clean -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android
-	cp $(TARGET_KERNEL_SOURCE)/drivers/video/omap2/omapfb/omapfb.h $(KERNEL_OUT)/drivers/video/omap2/omapfb/omapfb.h
-	make -j8 -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android \
-			ARCH=arm $(if $(ARM_CROSS_COMPILE),$(ARM_CROSS_COMPILE),$(KERNEL_CROSS_COMPILE)) \
-			KERNELDIR=$(KERNEL_OUT) TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=544sc PLATFORM_VERSION=4.0
-	mv $(KERNEL_OUT)/../../target/kbuild/pvrsrvkm_sgx544_112.ko $(KERNEL_MODULES_OUT)
-	$(if $(ARM_EABI_TOOLCHAIN),$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip, \
-			$(KERNEL_TOOLCHAIN_PATH)strip) --strip-unneeded \
-			$(KERNEL_MODULES_OUT)/pvrsrvkm_sgx544_112.ko
-
-TARGET_KERNEL_MODULES += SGX_MODULES
+ifneq (,$(strip $(wildcard $(TARGET_KERNEL_SOURCE)/drivers/gpu/ion/ion_page_pool.c)))
+export BOARD_USE_TI_LIBION := false
+endif
 
 # eMMC
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -66,12 +53,6 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1302069248
 BOARD_HAS_NO_REAL_SDCARD := true
 
-# Exploit
-BOARD_CUSTOM_BOOTIMG := true
-BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/exploit.mk
-
-BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
-
 # TWRP
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.bowser
 DEVICE_RESOLUTION := 800x1280
@@ -80,15 +61,10 @@ TW_NO_CPU_TEMP := true
 TW_EXCLUDE_SUPERSU := true
 TW_EXCLUDE_ENCRYPTED_BACKUPS := true
 
-# SGX
-#COMMON_GLOBAL_CFLAGS += -DAMAZON_LOG
-BOARD_EGL_CFG := $(DEVICE_PATH)/egl.cfg
-USE_OPENGL_RENDERER := true
-
 # Wireless
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA   := "/system/vendor/firmware/fw_bcm4330.bin"
-WIFI_DRIVER_FW_PATH_AP    := "/system/vendor/firmware/fw_bcm4330_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P   := "/system/vendor/firmware/fw_bcm4330_p2p.bin"
+WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/fw_bcm4330.bin"
+WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcm4330_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P := "/system/vendor/firmware/fw_bcm4330_p2p.bin"
