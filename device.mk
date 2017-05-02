@@ -72,5 +72,5 @@ PRODUCT_PACKAGES += \
     libwifi-hal-bcm \
     lib_driver_cmd_bcmdhd
 
--include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
+$(call inherit-product,hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
