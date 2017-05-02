@@ -20,6 +20,16 @@
     "dep_type": "hardware"
  },
  {
+    "repository": "android_vendor_ti",
+    "target_path": "vendor/ti",
+    "dep_type": "vendor"
+ },
+ {
+    "repository": "android_vendor_widevine",
+    "target_path": "vendor/widevine",
+    "dep_type": "vendor"
+ },
+ {
     "repository": "android_bootable_amazon_soho_u-boot",
     "target_path": "bootable/amazon/soho/u-boot"
  }
