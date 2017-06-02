@@ -186,9 +186,8 @@ on post-fs-data
     chown system system /dev/bu52061
 
 # change permissions for display backlight
+    chmod 0666 /sys/class/backlight/bowser/brightness
     chown system system /sys/class/backlight/bowser/brightness
-    chmod 0660 /sys/devices/platform/omap_i2c.2/i2c-2/2-002c/backlight/bowser
-    chown system system /sys/devices/platform/omap_i2c.2/i2c-2/2-002c/backlight/bowser
 
 # change permissions for S3D hardware
     chown system system /sys/devices/platform/omapdss/display0/s3d_enable
