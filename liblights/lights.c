@@ -49,7 +49,7 @@ static int write_int(char const *path, int value) {
 		return amt == -1 ? -errno : 0;
 	} else {
 		if (already_warned == 0) {
-			ALOGE("write_int failed to open %s\n", path);
+			ALOGE("write_int failed with %s\n", strerror(errno));
 			already_warned = 1;
 		}
 		return -errno;
