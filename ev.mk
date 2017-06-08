@@ -5,8 +5,17 @@ $(call inherit-product, vendor/ev/config/common_full_tablet_wifionly.mk)
 
 PRODUCT_RELEASE_NAME := KFSOWI
 PRODUCT_NAME := ev_soho
+PRODUCT_BOARD := soho
+PRODUCT_DEVICE := soho
+PRODUCT_BRAND := Amazon
+PRODUCT_MANUFACTURER := Amazon
+PRODUCT_MODEL := Kindle Fire HD (3rd Generation)
 
-BOOT_ANIMATION_SIZE := xga
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=soho \
+    BUILD_FINGERPRINT="amazon/amazon_soho/soho:6.0/MRA58K/2256973:user/release-keys" \
+    PRIVATE_BUILD_DESC="soho-user 6.0 MRA58K 2256973 release-keys" \
+    BUILD_NUMBER=228551
 
 # Set up the product codename, build version & MOTD.
 PRODUCT_CODENAME := lectio

@@ -20,19 +20,5 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from soho device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
-# Device identifier. This must come after all inclusions
-PRODUCT_NAME := full_soho
-
-PRODUCT_BOARD := soho
-PRODUCT_DEVICE := soho
-
-PRODUCT_BRAND := Amazon
-PRODUCT_MANUFACTURER := Amazon
-
-PRODUCT_MODEL := Kindle Fire HD (3rd Generation)
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	PRODUCT_NAME=soho
-
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/amazon/soho/soho-vendor.mk)
